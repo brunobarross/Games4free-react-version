@@ -1,0 +1,8 @@
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+@import './components/Body.css';
+@import './components/Sidebar.css';
+@import './components/Card.css';
+
+@import 'tailwindcss/utilities';
