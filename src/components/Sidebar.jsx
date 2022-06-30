@@ -7,7 +7,7 @@ const Sidebar = () => {
       <div className="logo">
         <Logo />
       </div>
-      <ul className="sidebar-lista">
+      <ul className="sidebar-lista overflow-y-auto overflow-x-hidden">
         <li>
           <a href="#" className="active">
             Todas as plataformas

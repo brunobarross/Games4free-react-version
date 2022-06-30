@@ -1,30 +1,39 @@
 @layer components {
   .card {
-    @apply rounded-lg relative overflow-hidden;
+    @apply rounded-lg relative flex flex-col overflow-hidden;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     .imagem {
-      @apply h-full;
-      &::after {
-        content: '';
-        @apply inset-0 w-full h-full block absolute;
-        background: rgba(0, 0, 0, 0.7);
-      }
       img {
-        @apply object-cover w-full h-full;
+        @apply object-cover w-full;
       }
     }
     .texto {
-      @apply absolute bottom-4 left-8;
-      h3 {
-        @apply text-white font-bold text-base text-ellipsis;
-        -webkit-line-clamp: 1;
-        line-clamp: 1;
-        -webkit-box-orient: vertical;
-      }
-      .btn-container {
-        @apply mt-3;
-        a {
-          @apply bg-primary-500 inline-flex items-center justify-center py-2 px-3 text-white text-sm rounded-[.25rem];
+      @apply px-4 py-6;
+      .badge {
+        @apply rounded-[.25rem] font-medium bg-slate-800 text-white px-3 py-2 text-xs;
+        &.xbox-series-x-s,
+        &.xbox-360 {
+          background: #0e740f;
         }
+        &.pc {
+          background: #002c3f;
+        }
+      }
+      h3 {
+        @apply font-semibold text-base text-ellipsis text-neutral-900 mt-6;
+      }
+      p {
+        @apply text-neutral-900 text-ellipsis overflow-hidden mt-4 text-sm;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+      }
+    }
+    .btn-container {
+      @apply px-4 pb-6;
+      @apply mt-auto;
+      a {
+        @apply bg-primary-500 inline-flex items-center justify-center py-[.875rem] px-3 text-white text-sm rounded-[.25rem] font-medium w-full;
       }
     }
   }

@@ -9,7 +9,7 @@ function App() {
 
   const getData = async () => {
     const response = await fetch(
-      'https://gamerpower.p.rapidapi.com/api/filter?type=game',
+      'https://gamerpower.p.rapidapi.com/api/filter?type=game&platform=epic-games-store.gog.origin.steam',
       {
         method: 'GET',
         headers: {
@@ -20,6 +20,7 @@ function App() {
       },
     );
     const dataAPI = await response.json();
+    console.log(dataAPI);
     setJogos(dataAPI);
   };
 

@@ -2,6 +2,7 @@
 
 @import 'tailwindcss/components';
 @import './components/Body.css';
+@import './components/Content.css';
 @import './components/Sidebar.css';
 @import './components/Card.css';
 
