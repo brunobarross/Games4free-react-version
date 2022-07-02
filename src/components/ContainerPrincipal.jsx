@@ -5,8 +5,11 @@ import Navbar from './Navbar';
 const ContainerPrincipal = (props) => {
   return (
     <div className="mx-auto w-full pl-[300px] relative">
-      <Navbar />
-      <Content jogos={props.jogos} />
+      <Content
+        jogos={props.jogos}
+        temJogo={props.temJogo}
+        textoResponse={props.textoResponse}
+      />
     </div>
   );
 };
