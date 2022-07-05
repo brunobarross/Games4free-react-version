@@ -2,7 +2,7 @@
   .content {
     @apply mx-auto mt-24 max-w-[1448px] my-[3rem] flex flex-col items-center px-[3rem];
     .cards-wrapper {
-      @apply md:grid md:grid-cols-3 gap-8 justify-center;
+      @apply flex flex-col md:grid md:grid-cols-3 gap-8 justify-center;
     }
   }
 }

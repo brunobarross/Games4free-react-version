@@ -5,7 +5,7 @@ const LinkSidebar = (props) => {
   return (
     <li>
       <Link
-        to={{ pathname: '/', search: props.loja }}
+        to={{ pathname: `/${props.loja}` }}
         onClick={(e) => props.handleClickLink(props.loja)}
       >
         {props.nome}

@@ -1,6 +1,6 @@
 @layer components {
   .sidebar {
-    @apply h-screen bg-primary-700 w-[300px] flex flex-col fixed top-0 left-0 shrink-0 shadow-sidebar z-[9999];
+    @apply min-h-screen h-full bg-primary-700 w-[300px] flex flex-col fixed top-0 left-0 shrink-0 shadow-sidebar z-[9999];
     transition: 0.3s ease;
     .logo {
       @apply p-8;

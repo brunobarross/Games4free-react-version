@@ -1,3 +1,4 @@
 body {
   overflow-x: hidden;
+  @apply min-h-screen h-full;
 }

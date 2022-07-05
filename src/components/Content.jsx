@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from './Card';
+import { useSearchParams } from 'react-router-dom';
 
-const Content = (props) => {
+const Content = ({ jogos, temJogo, textoResponse, setLojaUrl, lojaUrl }) => {
   return (
     <div className="content ">
-      {props.temJogo ? (
+      {temJogo ? (
         <div className="cards-wrapper ">
-          {props.jogos &&
-            props.jogos.map((jogo) => {
+          {jogos &&
+            jogos.map((jogo) => {
               return <Card key={jogo.id} {...jogo} />;
             })}
         </div>
       ) : (
-        <p>{props.textoResponse}</p>
+        <p>{textoResponse}</p>
       )}
     </div>
   );

@@ -1,9 +1,22 @@
 import React from 'react';
+import { List } from 'phosphor-react';
 
-const Navbar = () => {
+import Logo from './Logo';
+
+const Navbar = ({ sidebarOpen, setSideBarOpen }) => {
   return (
-    <div className="h-12 bg-white border-b border-gray-200 text-white fixed top-0 w-full z-[100]">
-      Navbar
+    <div className="h-16 flex justify-between md:hidden px-4 items-center bg-primary-700 text-white fixed top-0 w-full z-[100]">
+      <div className="logo w-40 pb-4">
+        <Logo />
+      </div>
+      <button
+        className={`w-10 h-10 bg-white border border-gray-20 rounded-full grid place-items-center transition-opacity ${
+          sidebarOpen ? 'opacity-0' : 'opacity-100'
+        }`}
+        onClick={() => setSideBarOpen(!sidebarOpen)}
+      >
+        <List size={24} color="#000" />
+      </button>
     </div>
   );
 };
