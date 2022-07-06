@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 
 const LinkSidebar = (props) => {
   return (
     <li>
-      <Link
+      <NavLink
         to={{ pathname: `/${props.loja}` }}
         onClick={(e) => props.handleClickLink(props.loja)}
       >
         {props.nome}
-      </Link>
+      </NavLink>
     </li>
   );
 };

@@ -37,7 +37,8 @@ function App() {
       loja: 'steam',
     },
   ]);
-  const isLoja = objLinks.some((i) => i.loja === lojaUrl);
+  const [isLoja, setIsLoja] = useState(false);
+
   const [parametroCorreto, setParametroCorreto] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [sidebarOpen, setSideBarOpen] = useState(false);
@@ -80,7 +81,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(isLoja, lojaUrl);
     if (!isLoja && isLoja !== '') {
       setParametroCorreto(false);
       return;
@@ -88,6 +88,13 @@ function App() {
     getData(lojaUrl ? lojaUrl : 'epic-games-store.gog.origin.steam');
     setParametroCorreto(true);
   }, [lojaUrl]);
+
+  useEffect(() => {
+    const someLoja = objLinks.some((i) => i.loja === lojaUrl);
+    if (someLoja) {
+      setIsLoja(true);
+    }
+  }, []);
 
   return (
     <BrowserRouter>

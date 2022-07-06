@@ -18,11 +18,10 @@ const ContainerPrincipal = ({
   const { loja } = useParams();
 
   useEffect(() => {
-    console.log(isLoading);
     if (loja) {
       setLojaUrl(loja);
     }
-  }, [loja]);
+  }, []);
   return (
     <>
       <div
