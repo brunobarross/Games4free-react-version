@@ -1,0 +1,14 @@
+@layer components {
+  .card-jogo {
+    @apply w-full;
+    .header {
+      @apply grid gap-4 px-4 py-4 items-start;
+      grid-template-columns: repeat(2, max-content);
+      .header-item {
+        span {
+          @apply block mt-2;
+        }
+      }
+    }
+  }
+}

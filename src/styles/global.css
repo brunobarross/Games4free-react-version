@@ -5,5 +5,19 @@
 @import './components/Content.css';
 @import './components/Sidebar.css';
 @import './components/Card.css';
+@import './components/Jogo.css';
 
 @import 'tailwindcss/utilities';
+
+@layer components {
+  .badge {
+    @apply rounded-[.25rem] font-medium bg-slate-800 text-white px-3 py-2 text-xs flex items-center w-max justify-center;
+    &.xbox-series-x-s,
+    &.xbox-360 {
+      background: #0e740f;
+    }
+    &.pc {
+      background: #002c3f;
+    }
+  }
+}

@@ -1,50 +1,39 @@
 import React, { useEffect } from 'react';
-import { Navigate, useParams, useSearchParams } from 'react-router-dom';
-
+import { Route, Routes } from 'react-router-dom';
 import Content from './Content';
 import Navbar from './Navbar';
 import Spinner from './Spinner';
+import Jogo from './Jogo';
 
 const ContainerPrincipal = ({
   jogos,
   temJogo,
   textoResponse,
-  setLojaUrl,
-  lojaUrl,
   isLoading,
   sidebarOpen,
   setSideBarOpen,
 }) => {
-  const { loja } = useParams();
-
-  useEffect(() => {
-    if (loja) {
-      setLojaUrl(loja);
-    }
-  }, []);
   return (
-    <>
-      <div
-        className={`mx-auto w-full sm:pl-[300px] relative min-h-screen overflow-hidden flex ${
-          isLoading ? 'justify-center items-center' : ''
-        }`}
-      >
-        <Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSideBarOpen} />
-        {isLoading == true && (
-          <div className="spinner-container ">
-            <Spinner />
-          </div>
-        )}
+    <div
+      className={`mx-auto w-full sm:pl-[300px] relative min-h-screen overflow-hidden flex ${
+        isLoading ? 'justify-center items-center' : ''
+      }`}
+    >
+      <Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSideBarOpen} />
+      {isLoading == true && (
+        <div className="spinner-container ">
+          <Spinner />
+        </div>
+      )}
 
-        {isLoading == false && temJogo == true && (
-          <Content
-            jogos={jogos}
-            temJogo={temJogo}
-            textoResponse={textoResponse}
-          />
-        )}
-      </div>
-    </>
+      {isLoading == false && temJogo == true && (
+        <Content
+          jogos={jogos}
+          temJogo={temJogo}
+          textoResponse={textoResponse}
+        />
+      )}
+    </div>
   );
 };
 

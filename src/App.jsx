@@ -14,7 +14,8 @@ function App() {
   const [jogos, setJogos] = useState('');
   const [temJogo, setTemJogo] = useState(false);
   const [textoResponse, setTextoResponse] = useState('');
-  const [lojaUrl, setLojaUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [sidebarOpen, setSideBarOpen] = useState(false);
   const [objLinks, setObjLinks] = useState([
     {
       nome: 'Todas as plataformas',
@@ -37,11 +38,6 @@ function App() {
       loja: 'steam',
     },
   ]);
-  const [isLoja, setIsLoja] = useState(false);
-
-  const [parametroCorreto, setParametroCorreto] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [sidebarOpen, setSideBarOpen] = useState(false);
 
   const getData = async (plataforma) => {
     setIsLoading(true);
@@ -51,9 +47,9 @@ function App() {
         {
           method: 'GET',
           headers: {
-            'x-rapidapi-host': 'gamerpower.p.rapidapi.com',
-            'x-rapidapi-key':
+            'X-RapidAPI-Key':
               '59df7faf5emsh2cb45c52d4b33e3p18956fjsn99432fdbfb5d',
+            'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com',
           },
         },
       );
@@ -81,19 +77,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (!isLoja && isLoja !== '') {
-      setParametroCorreto(false);
-      return;
-    }
-    getData(lojaUrl ? lojaUrl : 'epic-games-store.gog.origin.steam');
-    setParametroCorreto(true);
-  }, [lojaUrl]);
-
-  useEffect(() => {
-    const someLoja = objLinks.some((i) => i.loja === lojaUrl);
-    if (someLoja) {
-      setIsLoja(true);
-    }
+    getData('epic-games-store.gog.origin.steam');
   }, []);
 
   return (
@@ -109,10 +93,7 @@ function App() {
           jogos={jogos}
           temJogo={temJogo}
           textoResponse={textoResponse}
-          setLojaUrl={setLojaUrl}
-          lojaUrl={lojaUrl}
-          isLoja={isLoja}
-          parametroCorreto={parametroCorreto}
+          setIsLoading={setIsLoading}
           isLoading={isLoading}
           sidebarOpen={sidebarOpen}
           setSideBarOpen={setSideBarOpen}

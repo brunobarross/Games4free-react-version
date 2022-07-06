@@ -9,16 +9,7 @@
     }
     .texto {
       @apply px-4 py-6;
-      .badge {
-        @apply rounded-[.25rem] font-medium bg-slate-800 text-white px-3 py-2 text-xs;
-        &.xbox-series-x-s,
-        &.xbox-360 {
-          background: #0e740f;
-        }
-        &.pc {
-          background: #002c3f;
-        }
-      }
+
       h3 {
         @apply font-semibold text-base text-ellipsis text-neutral-900 mt-6;
       }

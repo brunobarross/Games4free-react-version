@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Card from './Card';
-import { useSearchParams } from 'react-router-dom';
 
 const Content = ({ jogos, temJogo, textoResponse, setLojaUrl, lojaUrl }) => {
   return (

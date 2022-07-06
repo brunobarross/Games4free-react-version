@@ -1,46 +1,57 @@
 import { Route, Routes } from 'react-router-dom';
 import ContainerPrincipal from './src/components/ContainerPrincipal';
 import Pagina404 from './src/pages/Pagina404';
-import pagina404 from './src/pages/Pagina404';
-
-export function Router(props) {
+import Jogo from './src/components/Jogo';
+export function Router({
+  jogos,
+  temJogo,
+  textoResponse,
+  setIsLoading,
+  isLoading,
+  sidebarOpen,
+  setSideBarOpen,
+}) {
   return (
     <Routes>
       <Route
         path="/"
         element={
           <ContainerPrincipal
-            jogos={props.jogos}
-            temJogo={props.temJogo}
-            textoResponse={props.textoResponse}
-            lojaUrl={props.lojaUrl}
-            setLojaUrl={props.setLojaUrl}
-            isLoading={props.isLoading}
-            sidebarOpen={props.sidebarOpen}
-            setSideBarOpen={props.setSideBarOpen}
+            jogos={jogos}
+            temJogo={temJogo}
+            textoResponse={textoResponse}
+            isLoading={isLoading}
+            sidebarOpen={sidebarOpen}
+            setSideBarOpen={setSideBarOpen}
           />
         }
       />
-
-      {props.parametroCorreto ? (
-        <Route
-          path="/:loja"
-          element={
-            <ContainerPrincipal
-              jogos={props.jogos}
-              temJogo={props.temJogo}
-              textoResponse={props.textoResponse}
-              lojaUrl={props.lojaUrl}
-              setLojaUrl={props.setLojaUrl}
-              isLoading={props.isLoading}
-              sidebarOpen={props.sidebarOpen}
-              setSideBarOpen={props.setSideBarOpen}
-            />
-          }
-        />
-      ) : (
-        <Route path="*" element={<Pagina404 />} />
-      )}
+      <Route
+        path="/:loja"
+        element={
+          <ContainerPrincipal
+            jogos={jogos}
+            temJogo={temJogo}
+            textoResponse={textoResponse}
+            isLoading={isLoading}
+            sidebarOpen={sidebarOpen}
+            setSideBarOpen={setSideBarOpen}
+          />
+        }
+      />
+      <Route
+        path="/jogos/:id"
+        element={
+          <Jogo
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            temJogo={temJogo}
+            sidebarOpen={sidebarOpen}
+            setSideBarOpen={setSideBarOpen}
+          />
+        }
+      />
+      <Route path="*" element={<Pagina404 />} />
     </Routes>
   );
 }
