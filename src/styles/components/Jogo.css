@@ -1,12 +1,47 @@
 @layer components {
   .card-jogo {
-    @apply w-full;
+    @apply flex flex-col max-w-[1000px]  overflow-hidden bg-white px-8;
+
     .header {
-      @apply grid gap-4 px-4 py-4 items-start;
-      grid-template-columns: repeat(2, max-content);
-      .header-item {
-        span {
-          @apply block mt-2;
+      img {
+        @apply rounded-lg;
+      }
+    }
+
+    .informacoes {
+      @apply py-8;
+      .titulo {
+        h3 {
+          @apply text-2xl font-semibold;
+        }
+      }
+      .plataforma {
+        @apply flex items-center mt-4;
+      }
+      .valor {
+        @apply mt-4;
+        p {
+          @apply text-primary-500 font-medium;
+          span {
+            @apply line-through text-neutral-100 inline-flex ml-1;
+          }
+        }
+      }
+      .descricao {
+        @apply mt-8;
+
+        p {
+          @apply font-normal text-base;
+          line-height: 150%;
+        }
+      }
+      .instrucoes {
+        @apply mt-8;
+        h3 {
+          @apply font-semibold text-lg;
+        }
+        p {
+          @apply mt-4;
         }
       }
     }
