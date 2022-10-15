@@ -21,8 +21,7 @@ const Jogo = ({
           method: 'GET',
           headers: {
             'x-rapidapi-host': 'gamerpower.p.rapidapi.com',
-            'x-rapidapi-key':
-              '59df7faf5emsh2cb45c52d4b33e3p18956fjsn99432fdbfb5d',
+            'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
           },
         },
       );
