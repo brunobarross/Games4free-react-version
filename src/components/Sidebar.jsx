@@ -2,13 +2,11 @@ import React from 'react';
 import Logo from './Logo';
 import LinkSidebar from './LinkSidebar';
 import { X } from 'phosphor-react';
+import { GlobalContext } from '../context/Global';
 
-const Sidebar = ({
-  objLinks,
-  sidebarOpen,
-  handleClickLink,
-  setSideBarOpen,
-}) => {
+const Sidebar = () => {
+  const { objLinks, sidebarOpen, handleClickLink, setSideBarOpen } =
+    React.useContext(GlobalContext);
   return (
     <div
       className={`sidebar ${
@@ -32,9 +30,9 @@ const Sidebar = ({
             return (
               <LinkSidebar
                 key={nome}
+                handleClickLink={handleClickLink}
                 nome={nome}
                 loja={loja}
-                handleClickLink={handleClickLink}
               />
             );
           })}
