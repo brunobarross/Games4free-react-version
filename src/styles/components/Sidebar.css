@@ -17,5 +17,32 @@
         }
       }
     }
+    .sidebar-footer{
+      @apply mt-auto px-8 pb-8;
+      span{
+        @apply text-white text-sm leading-[150%];
+      }
+      p{
+        @apply text-white text-xs ;
+        a{
+          @apply font-medium;
+          color: red;
+        }
+      }
+      .social{
+        @apply flex items-center my-4;
+        a{
+          @apply flex  hover:-translate-y-1;
+          transition: .3s ease;
+          & +  a{
+            @apply ml-4
+          }
+          svg{
+            @apply w-8 h-8;
+          }
+        }
+      }
+    }
+
   }
 }

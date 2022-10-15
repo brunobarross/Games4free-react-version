@@ -71,6 +71,7 @@ export const GlobalStorage = ({ children }) => {
   const handleClickLink = ({ currentTarget }) => {
     if (currentTarget.textContent == 'Todas as plataformas') {
       setNomeLoja('');
+      setSideBarOpen(!sidebarOpen);
       return;
     }
     setNomeLoja(currentTarget.textContent);
