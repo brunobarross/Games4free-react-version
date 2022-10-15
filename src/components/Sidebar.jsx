@@ -40,7 +40,7 @@ const Sidebar = () => {
       <div className="sidebar-footer">
         <span>Orgulhosamente desenvolvido por Altamiro Bruno.</span>
         <div className="social">
-          <a href="#">
+          <a href="https://github.com/brunobarross" target="_blank">
             <svg
               width="512"
               height="512"
@@ -54,7 +54,7 @@ const Sidebar = () => {
               />
             </svg>
           </a>
-          <a href="#">
+          <a href="https://www.linkedin.com/in/altamirobruno/" target="_blank">
             <svg
               width="512"
               height="512"
@@ -72,7 +72,11 @@ const Sidebar = () => {
         <div className="copy">
           <p>
             Os dados aqui presentes são fornecidos pela API{' '}
-            <a href="#"> Gamer Power</a>.
+            <a href="https://www.gamerpower.com/api-read" target="_blank">
+              {' '}
+              Gamer Power
+            </a>
+            .
           </p>
         </div>
       </div>
