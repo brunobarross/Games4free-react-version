@@ -10,7 +10,6 @@ const Jogo = () => {
   const [jogo, setJogo] = useState('');
   let { id } = useParams();
   const getData = async (url) => {
-    setIsLoading(true);
     try {
       const response = await fetch(
         `https://gamerpower.p.rapidapi.com/api/giveaway?id=${url}`,
