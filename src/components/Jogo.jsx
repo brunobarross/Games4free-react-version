@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { GlobalContext } from '../context/Global';
 import Navbar from './Navbar';
 
-const Jogo = ({
-  setIsLoading,
-  isLoading,
-  temJogo,
-  sidebarOpen,
-  setSideBarOpen,
-}) => {
+const Jogo = () => {
+  const {
+    setIsLoading,
+    isLoading,
+    temJogo,
+    sidebarOpen,
+    setSideBarOpen,
+  } = React.useContext(GlobalContext)
   const regex = /\d+/g;
   const [jogo, setJogo] = useState('');
   let { id } = useParams();

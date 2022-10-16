@@ -6,6 +6,7 @@ import {
   Route,
   useSearchParams,
 } from 'react-router-dom';
+import Jogo from './components/Jogo';
 
 import Sidebar from './components/Sidebar';
 import { GlobalStorage } from './context/Global';
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:loja" element={<Home />} />
+            <Route path="/jogos/:id" element={<Jogo />} />
           </Routes>
         </div>
       </BrowserRouter>

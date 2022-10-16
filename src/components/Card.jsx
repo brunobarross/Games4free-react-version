@@ -39,7 +39,7 @@ const Card = ({
         </span>
         <h3>{title}</h3>
         <p>{description}</p>
-        {/* <Link to={`/jogos/${id}`}>Ver detalhes</Link> */}
+        <Link to={`/jogos/${id}`}>Ver detalhes</Link>
       </div>
       <div className="btn-container">
         <a href={open_giveaway_url} target="_blank">

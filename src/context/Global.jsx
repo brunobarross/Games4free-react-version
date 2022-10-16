@@ -69,13 +69,21 @@ export const GlobalStorage = ({ children }) => {
   };
 
   const handleClickLink = ({ currentTarget }) => {
+    setIsLoading(true)
     if (currentTarget.textContent == 'Todas as plataformas') {
       setNomeLoja('');
       setSideBarOpen(!sidebarOpen);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
       return;
     }
     setNomeLoja(currentTarget.textContent);
     setSideBarOpen(!sidebarOpen);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
   };
 
   React.useEffect(() => {

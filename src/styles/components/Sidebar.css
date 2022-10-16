@@ -10,7 +10,7 @@
       li {
         @apply mt-5;
         a {
-          @apply inline-flex items-center py-5 px-4 w-full cursor-pointer rounded-r-lg text-white text-lg hover:bg-white hover:text-neutral-70 transition-all;
+          @apply inline-flex items-center py-5 px-4 w-full cursor-pointer rounded-r-lg text-white text-base hover:bg-white hover:text-neutral-70 transition-all;
           &.active {
             @apply bg-white text-neutral-70;
           }
@@ -18,12 +18,12 @@
       }
     }
     .sidebar-footer{
-      @apply mt-auto px-8 pb-8;
+      @apply mt-auto px-4 py-8;
       span{
-        @apply text-white text-sm leading-[150%];
+        @apply text-white text-xs leading-[150%] block;
       }
       p{
-        @apply text-white text-xs ;
+        @apply text-white text-[.625rem] ;
         a{
           @apply font-medium;
           color: red;
