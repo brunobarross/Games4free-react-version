@@ -4,13 +4,8 @@ import { GlobalContext } from '../context/Global';
 import Navbar from './Navbar';
 
 const Jogo = () => {
-  const {
-    setIsLoading,
-    isLoading,
-    temJogo,
-    sidebarOpen,
-    setSideBarOpen,
-  } = React.useContext(GlobalContext)
+  const { setIsLoading, isLoading, temJogo, sidebarOpen, setSideBarOpen } =
+    React.useContext(GlobalContext);
   const regex = /\d+/g;
   const [jogo, setJogo] = useState('');
   let { id } = useParams();
@@ -73,9 +68,10 @@ const Jogo = () => {
             <div className="descricao">
               <p>{jogo.description}</p>
             </div>
-            <div className="instrucoes">
-              <h3>How to get the game</h3>
-              <p>{jogo.instructions}</p>
+            <div className="btn-container">
+              <a href={jogo.open_giveaway_url} target="_blank">
+                PEGAR
+              </a>
             </div>
           </div>
         </div>

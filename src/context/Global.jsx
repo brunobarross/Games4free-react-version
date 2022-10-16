@@ -1,5 +1,6 @@
 import { MapPin } from 'phosphor-react';
 import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 
 export const GlobalContext = React.createContext();
 
@@ -50,7 +51,6 @@ export const GlobalStorage = ({ children }) => {
       );
 
       const dataAPI = await response.json();
-      console.log(dataAPI, 'status');
       if (dataAPI.status === 0 || !dataAPI) {
         setTextoResponse('Não há jogos disponíveis');
         setTemJogo(false);
@@ -69,7 +69,7 @@ export const GlobalStorage = ({ children }) => {
   };
 
   const handleClickLink = ({ currentTarget }) => {
-    setIsLoading(true)
+    setIsLoading(true);
     if (currentTarget.textContent == 'Todas as plataformas') {
       setNomeLoja('');
       setSideBarOpen(!sidebarOpen);
@@ -83,7 +83,6 @@ export const GlobalStorage = ({ children }) => {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
-
   };
 
   React.useEffect(() => {

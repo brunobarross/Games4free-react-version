@@ -5,7 +5,6 @@ import Card from './Card';
 const Content = () => {
   const { jogos, temJogo, textoResponse, setLojaUrl, lojaUrl } =
     React.useContext(GlobalContext);
-  console.log(textoResponse);
   return (
     <div className="content ">
       <div

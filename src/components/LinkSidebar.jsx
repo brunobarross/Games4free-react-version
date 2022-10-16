@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const LinkSidebar = ({ handleClickLink, loja, nome }) => {
   return (
     <li>
-      <NavLink to={`${loja}`} onClick={(e) => handleClickLink(e, loja)}>
+      <NavLink to={`${loja}`} onClick={(e) => handleClickLink(e)}>
         {nome}
       </NavLink>
     </li>
