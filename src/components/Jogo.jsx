@@ -34,7 +34,7 @@ const Jogo = () => {
 
   return (
     <div
-      className={`bg-white mx-auto w-full sm:pl-[300px] py-16 justify-center relative min-h-screen overflow-hidden flex ${
+      className={`bg-white mx-auto w-full sm:pl-[300px] py-16 relative min-h-screen overflow-hidden flex flex-col justify-center ${
         isLoading ? 'justify-center items-center' : ''
       }`}
     >

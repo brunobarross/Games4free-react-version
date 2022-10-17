@@ -7,7 +7,6 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({ children }) => {
   const [response, setResponse] = React.useState(null);
   const [jogos, setJogos] = React.useState(null);
-  const [jogosFiltrados, setJogosFiltrados] = React.useState(null);
   const [nomeLoja, setNomeLoja] = React.useState('');
   const [temJogo, setTemJogo] = React.useState(false);
   const [textoResponse, setTextoResponse] = React.useState('');
@@ -20,7 +19,7 @@ export const GlobalStorage = ({ children }) => {
     },
     {
       nome: 'Epic Games',
-      loja: 'Epic Games Store',
+      loja: 'Epic-Games-Store',
     },
     {
       nome: 'GOG',
@@ -69,6 +68,7 @@ export const GlobalStorage = ({ children }) => {
   };
 
   const handleClickLink = ({ currentTarget }) => {
+    console.log(currentTarget.textContent);
     setIsLoading(true);
     if (currentTarget.textContent == 'Todas as plataformas') {
       setNomeLoja('');
