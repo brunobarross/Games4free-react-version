@@ -99,8 +99,8 @@ const Card = ({
           {end_date !== 'N/A' ? (
             <span className="block text-sm font-medium text-red-400">
               {timerDays <= 9 ? `0${timerDays}` : timerDays}d{' '}
-              {timerHours <= 9 ? ` 0${timerHours}` : timerHours}h:{' '}
-              {timerMinutes <= 9 ? `0${timerMinutes}` : timerMinutes}m:{' '}
+              {timerHours <= 9 ? ` 0${timerHours}` : timerHours}h:
+              {timerMinutes <= 9 ? `0${timerMinutes}` : timerMinutes}m:
               {timerSeconds <= 9 ? `0${timerSeconds}` : timerSeconds}s
             </span>
           ) : (
