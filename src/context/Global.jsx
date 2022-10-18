@@ -84,7 +84,6 @@ export const GlobalStorage = ({ children }) => {
     }, 500);
   };
 
-  console.log(jogos);
   React.useEffect(() => {
     getData();
   }, []);

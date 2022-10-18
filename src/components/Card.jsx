@@ -27,8 +27,10 @@ const Card = ({
   const startTimer = () => {
     if (end_date == 'N/A') return;
     const countdownDate = new Date(end_date).getTime();
+    console.log(countdownDate);
     interval = setInterval(() => {
       const now = new Date().getTime();
+      console.log(now);
       const distance = countdownDate - now;
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
@@ -88,7 +90,7 @@ const Card = ({
             {platforms.split(',')[1]}
           </span>
         </div>
-        <div className="flex items-center justify-between mt-16">
+        <div className="flex items-center justify-between mt-4">
           <div className="valor">
             <p>
               FREE <span>{worth}</span>
@@ -96,9 +98,9 @@ const Card = ({
           </div>
           {end_date !== 'N/A' ? (
             <span className="block text-sm font-medium text-red-400">
-              {timerDays <= 9 ? `0${timerDays}` : timerDays}d
-              {timerHours <= 9 ? ` 0${timerHours}` : timerHours}h:
-              {timerMinutes <= 9 ? `0${timerMinutes}` : timerMinutes}m:
+              {timerDays <= 9 ? `0${timerDays}` : timerDays}d{' '}
+              {timerHours <= 9 ? ` 0${timerHours}` : timerHours}h:{' '}
+              {timerMinutes <= 9 ? `0${timerMinutes}` : timerMinutes}m:{' '}
               {timerSeconds <= 9 ? `0${timerSeconds}` : timerSeconds}s
             </span>
           ) : (
