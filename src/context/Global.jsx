@@ -67,8 +67,7 @@ export const GlobalStorage = ({ children }) => {
     }
   };
 
-  const handleClickLink = ({ currentTarget }) => {
-    console.log(currentTarget.textContent);
+  const handleClickLink = ({ currentTarget }, loja) => {
     setIsLoading(true);
     if (currentTarget.textContent == 'Todas as plataformas') {
       setNomeLoja('');
@@ -78,13 +77,14 @@ export const GlobalStorage = ({ children }) => {
       }, 500);
       return;
     }
-    setNomeLoja(currentTarget.textContent);
+    setNomeLoja(loja);
     setSideBarOpen(!sidebarOpen);
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
   };
 
+  console.log(jogos);
   React.useEffect(() => {
     getData();
   }, []);

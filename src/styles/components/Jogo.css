@@ -45,6 +45,16 @@
           @apply mt-4;
         }
       }
+
+      .tempo-resgate{
+        @apply mt-8;
+        h2{
+          @apply text-2xl ;
+        }
+        p{
+          @apply block text-2xl font-medium text-primary-500;
+        }
+      }
       .btn-container {
         @apply mt-auto pt-6 flex justify-start;
   

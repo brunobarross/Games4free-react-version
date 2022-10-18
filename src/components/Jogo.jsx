@@ -28,6 +28,38 @@ const Jogo = () => {
     }
   };
 
+  const [timerDays, setTimerDays] = React.useState('00');
+  const [timerHours, setTimerHours] = React.useState('00');
+  const [timerMinutes, setTimerMinutes] = React.useState('00');
+  const [timerSeconds, setTimerSeconds] = React.useState('00');
+  let interval = React.useRef();
+
+  const startTimer = () => {
+    if (jogo.end_date == 'N/A') return;
+    const countdownDate = new Date(jogo.end_date).getTime();
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance < 0) {
+        //parar contador
+        clearInterval(interval.current);
+      } else {
+        //atualizar contador
+        setTimerDays(days);
+        setTimerHours(hours);
+        setTimerMinutes(minutes);
+        setTimerSeconds(seconds);
+      }
+    }, 1000);
+  };
+
   useEffect(() => {
     getData(id);
   }, [id]);
@@ -67,6 +99,7 @@ const Jogo = () => {
             <div className="descricao">
               <p>{jogo.description}</p>
             </div>
+
             <div className="btn-container">
               <a href={jogo.open_giveaway_url} target="_blank">
                 PEGAR
