@@ -5,7 +5,7 @@ function Spinner() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      className="w-16 md:w-[6.25rem] mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+      className="w-16 md:w-[6.25rem] mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-white"
       viewBox="0 0 100 101"
     >
       <path

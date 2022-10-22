@@ -17,32 +17,31 @@
         }
       }
     }
-    .sidebar-footer{
+    .sidebar-footer {
       @apply mt-auto px-4 py-8;
-      span{
+      span {
         @apply text-white text-xs leading-[150%] block;
       }
-      p{
-        @apply text-white text-[.625rem] ;
-        a{
+      p {
+        @apply text-white text-[.625rem];
+        a {
           @apply font-medium;
           color: red;
         }
       }
-      .social{
+      .social {
         @apply flex items-center my-4;
-        a{
+        a {
           @apply flex  hover:-translate-y-1;
-          transition: .3s ease;
-          & +  a{
-            @apply ml-4
+          transition: 0.3s ease;
+          & + a {
+            @apply ml-4;
           }
-          svg{
+          svg {
             @apply w-8 h-8;
           }
         }
       }
     }
-
   }
 }

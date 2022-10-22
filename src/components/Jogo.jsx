@@ -8,7 +8,10 @@ const Jogo = () => {
     React.useContext(GlobalContext);
   const regex = /\d+/g;
   const [jogo, setJogo] = useState('');
+  const [arrayString, setArrayString] = useState([]);
+  const [instrucao, setInstrucao] = useState('');
   let { id } = useParams();
+
   const getData = async (url) => {
     try {
       const response = await fetch(
@@ -28,45 +31,25 @@ const Jogo = () => {
     }
   };
 
-  const [timerDays, setTimerDays] = React.useState('00');
-  const [timerHours, setTimerHours] = React.useState('00');
-  const [timerMinutes, setTimerMinutes] = React.useState('00');
-  const [timerSeconds, setTimerSeconds] = React.useState('00');
-  let interval = React.useRef();
-
-  const startTimer = () => {
-    if (jogo.end_date == 'N/A') return;
-    const countdownDate = new Date(jogo.end_date).getTime();
-    interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      if (distance < 0) {
-        //parar contador
-        clearInterval(interval.current);
-      } else {
-        //atualizar contador
-        setTimerDays(days);
-        setTimerHours(hours);
-        setTimerMinutes(minutes);
-        setTimerSeconds(seconds);
-      }
-    }, 1000);
+  const handleText = (texto) => {
+    const textoAPI = texto;
+    const arrayStr = textoAPI.replace(/\r\n/, '<br>').split('<br>');
+    setArrayString(arrayStr);
   };
 
   useEffect(() => {
     getData(id);
   }, [id]);
 
+  useEffect(() => {
+    if (jogo) {
+      handleText(jogo.instructions);
+    }
+  }, [jogo]);
+
   return (
     <div
-      className={`bg-white mx-auto w-full sm:pl-[300px] py-16 relative min-h-screen overflow-hidden flex flex-col justify-center ${
+      className={`mx-auto w-full sm:pl-[300px] py-16 relative min-h-screen overflow-hidden flex flex-col justify-center ${
         isLoading ? 'justify-center items-center' : ''
       }`}
     >
@@ -99,10 +82,16 @@ const Jogo = () => {
             <div className="descricao">
               <p>{jogo.description}</p>
             </div>
+            <div className="instrucoes">
+              <h3>Instructions</h3>
+              {arrayString.map((i) => {
+                return <p key={i}>{i}</p>;
+              })}
+            </div>
 
             <div className="btn-container">
               <a href={jogo.open_giveaway_url} target="_blank">
-                PEGAR
+                GET GAME
               </a>
             </div>
           </div>

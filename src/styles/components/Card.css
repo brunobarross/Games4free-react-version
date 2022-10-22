@@ -1,6 +1,6 @@
 @layer components {
   .card {
-    @apply rounded-lg relative flex flex-col overflow-hidden;
+    @apply rounded-lg relative flex flex-col overflow-hidden bg-white;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     .imagem {
       img {
@@ -11,7 +11,7 @@
     .texto {
       @apply px-4 py-6;
 
-     .title {
+      .title {
         @apply font-semibold text-base text-ellipsis text-neutral-900 mt-6;
       }
       .description {
@@ -20,18 +20,17 @@
         -webkit-box-orient: vertical;
         display: -webkit-box;
       }
-      .spinner-container{
-        svg{
+      .spinner-container {
+        svg {
           @apply w-4 h-4;
         }
       }
-      .data{
+      .data {
         @apply block text-sm font-medium text-red-400;
       }
       .valor {
-  
         p {
-          @apply text-primary-500 font-medium;
+          @apply text-sm text-primary-500 font-medium;
           span {
             @apply line-through text-neutral-100 inline-flex ml-1;
           }
@@ -39,10 +38,9 @@
       }
     }
     .btn-container {
-      @apply px-4 pb-6;
-      @apply mt-auto;
+      @apply px-4 pb-6 mt-auto;
       a {
-        @apply bg-primary-500 inline-flex items-center justify-center py-[.875rem] px-3 text-white text-sm rounded-[.25rem] font-medium w-full;
+        @apply bg-primary-500 border border-transparent inline-flex items-center justify-center py-[.875rem] px-3 text-white text-sm rounded-[.25rem] font-medium w-full transition-all hover:bg-white hover:border-primary-500 hover:text-primary-500;
       }
     }
   }

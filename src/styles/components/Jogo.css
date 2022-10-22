@@ -1,11 +1,10 @@
 @layer components {
   .card-jogo {
-    @apply flex flex-col max-w-[1000px] overflow-hidden bg-white lg:mx-auto mx-6 lg:my-0 my-16  h-max rounded-lg ;
+    @apply flex flex-col max-w-[800px] overflow-hidden bg-white lg:mx-auto mx-6 lg:my-0 my-16  h-max rounded-lg;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 
     .header {
       img {
-
       }
     }
 
@@ -46,20 +45,20 @@
         }
       }
 
-      .tempo-resgate{
+      .tempo-resgate {
         @apply mt-8;
-        h2{
-          @apply text-2xl ;
+        h2 {
+          @apply text-2xl;
         }
-        p{
+        p {
           @apply block text-2xl font-medium text-primary-500;
         }
       }
       .btn-container {
         @apply mt-auto pt-6 flex justify-start;
-  
+
         a {
-          @apply bg-primary-500 inline-flex items-center justify-center py-[.875rem] px-3 text-white text-sm rounded-[.25rem] font-medium lg:w-[12.5rem] w-full;
+          @apply border border-transparent bg-primary-500 inline-flex items-center justify-center py-[.875rem] px-3 text-white text-sm rounded-[.25rem] font-medium lg:w-[12.5rem] w-full transition-all hover:bg-white hover:border-primary-500 hover:text-primary-500;
         }
       }
     }

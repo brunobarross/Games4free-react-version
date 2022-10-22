@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Spinner from '../components/Spinner';
+import { GlobalContext } from '../context/Global';
 
 const Card = ({
   id,
@@ -21,45 +21,25 @@ const Card = ({
   isLoading,
   setIsLoading,
 }) => {
-  const [timerDays, setTimerDays] = React.useState('00');
-  const [timerHours, setTimerHours] = React.useState('00');
-  const [timerMinutes, setTimerMinutes] = React.useState('00');
-  const [timerSeconds, setTimerSeconds] = React.useState('00');
-  const [loadingTime, setLoadingTime] = React.useState(false);
-  let interval = React.useRef();
-
-  const startTimer = () => {
-    if (end_date == 'N/A') return;
-    const countdownDate = new Date(end_date).getTime();
-    interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      if (distance < 0) {
-        //parar contador
-        clearInterval(interval.current);
-      } else {
-        //atualizar contador
-        setTimerDays(days);
-        setTimerHours(hours);
-        setTimerMinutes(minutes);
-        setTimerSeconds(seconds);
-      }
-    }, 1000);
-  };
+  const {
+    timerDays,
+    timerHours,
+    timerMinutes,
+    timerSeconds,
+    setTimerDays,
+    setTimerHours,
+    setTimerMinutes,
+    setTimerSeconds,
+    startTimer,
+    interval,
+  } = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    startTimer();
+    startTimer(end_date);
     return () => {
       clearInterval(interval.current);
     };
-  }, []);
+  });
 
   return (
     <div
@@ -99,7 +79,7 @@ const Card = ({
             </p>
           </div>
           {end_date !== 'N/A' ? (
-            <span className="data">
+            <span className="block text-xs font-medium text-red-400">
               {timerDays <= 9 ? `0${timerDays}` : timerDays}d{' '}
               {timerHours <= 9 ? ` 0${timerHours}` : timerHours}h:
               {timerMinutes <= 9 ? `0${timerMinutes}` : timerMinutes}m:
@@ -116,12 +96,12 @@ const Card = ({
           to={`/jogos/${id}`}
           className="text-primary-500 font-medium inline-flex mt-4 text-sm"
         >
-          Ver detalhes
+          More details
         </Link>
       </div>
       <div className="btn-container">
         <a href={open_giveaway_url} target="_blank">
-          PEGAR
+          GET GAME
         </a>
       </div>
     </div>

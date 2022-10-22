@@ -14,7 +14,7 @@ export const GlobalStorage = ({ children }) => {
   const [sidebarOpen, setSideBarOpen] = React.useState(false);
   const [objLinks, setObjLinks] = React.useState([
     {
-      nome: 'Todas as plataformas',
+      nome: 'All Platforms',
       loja: '',
     },
     {
@@ -34,6 +34,11 @@ export const GlobalStorage = ({ children }) => {
       loja: 'Steam',
     },
   ]);
+  const [timerDays, setTimerDays] = React.useState('00');
+  const [timerHours, setTimerHours] = React.useState('00');
+  const [timerMinutes, setTimerMinutes] = React.useState('00');
+  const [timerSeconds, setTimerSeconds] = React.useState('00');
+  let interval = React.useRef();
 
   const getData = async (plataforma) => {
     setIsLoading(true);
@@ -69,7 +74,7 @@ export const GlobalStorage = ({ children }) => {
 
   const handleClickLink = ({ currentTarget }, loja) => {
     setIsLoading(true);
-    if (currentTarget.textContent == 'Todas as plataformas') {
+    if (currentTarget.textContent == 'All Platforms') {
       setNomeLoja('');
       setSideBarOpen(!sidebarOpen);
       setTimeout(() => {
@@ -82,6 +87,32 @@ export const GlobalStorage = ({ children }) => {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
+  };
+
+  const startTimer = (end_date) => {
+    if (end_date == 'N/A') return;
+    const countdownDate = new Date(end_date).getTime();
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance < 0) {
+        //parar contador
+        clearInterval(interval.current);
+      } else {
+        //atualizar contador
+        setTimerDays(days);
+        setTimerHours(hours);
+        setTimerMinutes(minutes);
+        setTimerSeconds(seconds);
+      }
+    }, 1000);
   };
 
   React.useEffect(() => {
@@ -123,6 +154,16 @@ export const GlobalStorage = ({ children }) => {
         setSideBarOpen,
         getData,
         handleClickLink,
+        timerDays,
+        timerHours,
+        timerMinutes,
+        timerSeconds,
+        setTimerDays,
+        setTimerHours,
+        setTimerMinutes,
+        setTimerSeconds,
+        interval,
+        startTimer,
       }}
     >
       {children}

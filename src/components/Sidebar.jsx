@@ -38,7 +38,7 @@ const Sidebar = () => {
           })}
       </ul>
       <div className="sidebar-footer">
-        <span>Orgulhosamente desenvolvido por Altamiro Bruno.</span>
+        <span>Proudly developed by Altamiro Bruno.</span>
         <div className="social">
           <a href="https://github.com/brunobarross" target="_blank">
             <svg

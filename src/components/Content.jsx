@@ -32,7 +32,7 @@ const Content = () => {
           })
         ) : (
           <div className="message flex flex-col justify-center">
-            <p className="text-2xl ">Não há jogos disponíveis</p>
+            <p className="text-2xl text-white ">There are no games available</p>
           </div>
         )}
       </div>

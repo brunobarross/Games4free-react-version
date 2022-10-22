@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         white: '#fff',
+        'neutral-bg': '#1F1F1F',
         'neutral-30': '#B3B3B3;',
         'neutral-40': '#999999',
         'neutral-50': '#808080',

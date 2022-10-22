@@ -9,6 +9,26 @@
 
 @import 'tailwindcss/utilities';
 
+html {
+  overflow-x: hidden;
+
+  --font-base: 100%;
+  font-size: var(--font-base);
+}
+
+@media (max-width: 1440px) {
+  html {
+      font-size: calc(var(--font-base) - 10%);
+  }
+}
+
+@media (max-width: 980px) {
+  html {
+      font-size: calc(var(--font-base) - 12.5%);
+  }
+}
+
+
 @layer components {
   .badge {
     @apply rounded-[.25rem] font-medium bg-slate-800 text-white px-3 py-2 text-xs flex items-center w-max justify-center;
@@ -21,3 +41,4 @@
     }
   }
 }
+
