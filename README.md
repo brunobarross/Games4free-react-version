@@ -1,1 +1,1 @@
-# dashboard-react
+# Games4free React version
