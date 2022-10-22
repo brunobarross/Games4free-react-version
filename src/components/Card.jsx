@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Spinner from '../components/Spinner';
 
 const Card = ({
   id,
@@ -17,20 +18,21 @@ const Card = ({
   worth,
   users,
   image,
+  isLoading,
+  setIsLoading,
 }) => {
   const [timerDays, setTimerDays] = React.useState('00');
   const [timerHours, setTimerHours] = React.useState('00');
   const [timerMinutes, setTimerMinutes] = React.useState('00');
   const [timerSeconds, setTimerSeconds] = React.useState('00');
+  const [loadingTime, setLoadingTime] = React.useState(false);
   let interval = React.useRef();
 
   const startTimer = () => {
     if (end_date == 'N/A') return;
     const countdownDate = new Date(end_date).getTime();
-    console.log(countdownDate);
     interval = setInterval(() => {
       const now = new Date().getTime();
-      console.log(now);
       const distance = countdownDate - now;
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
@@ -57,7 +59,7 @@ const Card = ({
     return () => {
       clearInterval(interval.current);
     };
-  });
+  }, []);
 
   return (
     <div
@@ -97,7 +99,7 @@ const Card = ({
             </p>
           </div>
           {end_date !== 'N/A' ? (
-            <span className="block text-sm font-medium text-red-400">
+            <span className="data">
               {timerDays <= 9 ? `0${timerDays}` : timerDays}d{' '}
               {timerHours <= 9 ? ` 0${timerHours}` : timerHours}h:
               {timerMinutes <= 9 ? `0${timerMinutes}` : timerMinutes}m:

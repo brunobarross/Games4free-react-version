@@ -20,6 +20,14 @@
         -webkit-box-orient: vertical;
         display: -webkit-box;
       }
+      .spinner-container{
+        svg{
+          @apply w-4 h-4;
+        }
+      }
+      .data{
+        @apply block text-sm font-medium text-red-400;
+      }
       .valor {
   
         p {

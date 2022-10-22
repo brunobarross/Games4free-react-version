@@ -3,8 +3,15 @@ import { GlobalContext } from '../context/Global';
 import Card from './Card';
 
 const Content = () => {
-  const { jogos, temJogo, textoResponse, setLojaUrl, lojaUrl } =
-    React.useContext(GlobalContext);
+  const {
+    isLoading,
+    setIsLoading,
+    jogos,
+    temJogo,
+    textoResponse,
+    setLojaUrl,
+    lojaUrl,
+  } = React.useContext(GlobalContext);
   return (
     <div className="content ">
       <div
@@ -14,7 +21,14 @@ const Content = () => {
       >
         {jogos.length ? (
           jogos.map((jogo) => {
-            return <Card key={jogo.id} {...jogo} />;
+            return (
+              <Card
+                key={jogo.id}
+                {...jogo}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+              />
+            );
           })
         ) : (
           <div className="message flex flex-col justify-center">

@@ -6,6 +6,7 @@ import Spinner from '../components/Spinner';
 import Jogo from '../components/Jogo';
 import { GlobalContext } from '../context/Global';
 
+
 const Home = () => {
   const {
     jogos,
