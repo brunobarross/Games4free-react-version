@@ -51,6 +51,7 @@ const Card = ({
       <div className="imagem ">
         <img src={image}></img>
       </div>
+
       <div className="texto ">
         <div className="badges flex items-center">
           <span

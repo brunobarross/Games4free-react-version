@@ -1,10 +1,10 @@
 @layer components {
   .card {
-    @apply rounded-lg relative flex flex-col overflow-hidden bg-white;
+    @apply rounded-lg relative flex flex-col  bg-white;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     .imagem {
       img {
-        @apply object-cover w-full;
+        @apply object-cover w-full rounded-t-lg;
       }
     }
 
