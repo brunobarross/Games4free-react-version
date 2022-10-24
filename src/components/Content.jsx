@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { GlobalContext } from '../context/Global';
-import Card from './Card';
+import React, { useEffect } from "react"
+import { GlobalContext } from "../context/Global"
+import Card from "./Card"
 
 const Content = () => {
   const {
@@ -11,12 +11,12 @@ const Content = () => {
     textoResponse,
     setLojaUrl,
     lojaUrl,
-  } = React.useContext(GlobalContext);
+  } = React.useContext(GlobalContext)
   return (
     <div className="content ">
       <div
         className={`cards-wrapper ${
-          !jogos.length ? '!grid-cols-1  h-full' : ''
+          !jogos.length ? "!grid-cols-1  h-full" : ""
         }`}
       >
         {jogos.length ? (
@@ -28,16 +28,21 @@ const Content = () => {
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
               />
-            );
+            )
           })
         ) : (
           <div className="message flex flex-col justify-center">
             <p className="text-2xl text-white ">There are no games available</p>
           </div>
         )}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442854490568457"
+          crossorigin="anonymous"
+        ></script>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Content;
+export default Content
