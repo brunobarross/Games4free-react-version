@@ -35,11 +35,6 @@ const Content = () => {
             <p className="text-2xl text-white ">There are no games available</p>
           </div>
         )}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442854490568457"
-          crossorigin="anonymous"
-        ></script>
       </div>
     </div>
   )
