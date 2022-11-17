@@ -34,12 +34,12 @@ const Card = ({
     interval,
   } = React.useContext(GlobalContext);
 
-  React.useEffect(() => {
-    startTimer(end_date);
-    return () => {
-      clearInterval(interval.current);
-    };
-  });
+  // React.useEffect(() => {
+  //   startTimer(end_date);
+  //   return () => {
+  //     clearInterval(interval.current);
+  //   };
+  // });
 
   return (
     <div
@@ -79,7 +79,7 @@ const Card = ({
               FREE <span>{worth}</span>
             </p>
           </div>
-          {end_date !== 'N/A' ? (
+          {/* {end_date !== 'N/A' ? (
             <span className="block text-xs font-medium text-red-400">
               {timerDays <= 9 ? `0${timerDays}` : timerDays}d{' '}
               {timerHours <= 9 ? ` 0${timerHours}` : timerHours}h:
@@ -88,7 +88,7 @@ const Card = ({
             </span>
           ) : (
             ''
-          )}
+          )} */}
         </div>
 
         <h3 className="title">{title}</h3>
