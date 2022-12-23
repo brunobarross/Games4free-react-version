@@ -44,9 +44,10 @@ export const GlobalStorage = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://gamerpower.p.rapidapi.com/api/filter?type=game&platform=epic-games-store.gog.origin.steam`,
+        `https://gamerpower.p.rapidapi.com/api/giveaways`,
         {
           method: 'GET',
+          params: {platform: 'steam', type: 'game'},
           headers: {
             'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
             'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com',
