@@ -2,6 +2,8 @@ import { MapPin } from 'phosphor-react';
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
+import axios from 'axios';
+
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
@@ -26,8 +28,12 @@ export const GlobalStorage = ({ children }) => {
       loja: 'GOG',
     },
     {
-      nome: 'Origin',
-      loja: 'Origin',
+      nome: 'Xbox One',
+      loja: 'Xbox One',
+    },
+    {
+      nome: 'Playstation 4',
+      loja: 'Playstation 4',
     },
     {
       nome: 'Steam',
@@ -40,37 +46,37 @@ export const GlobalStorage = ({ children }) => {
   const [timerSeconds, setTimerSeconds] = React.useState('00');
   let interval = React.useRef();
 
-  const getData = async (plataforma) => {
+  const getData = (plataforma) => {
     setIsLoading(true);
-    try {
-      const response = await fetch(
-        `https://gamerpower.p.rapidapi.com/api/giveaways`,
-        {
-          method: 'GET',
-          params: {platform: 'steam', type: 'game'},
-          headers: {
-            'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
-            'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com',
-          },
-        },
-      );
+    const options = {
+      method: 'GET',
+      url: 'https://gamerpower.p.rapidapi.com/api/giveaways',
+      params: { type: 'game' },
+      headers: {
+        'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
+        'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com'
+      }
+    };
 
-      const dataAPI = await response.json();
+    axios.request(options).then(function (response) {
+      const dataAPI = response.data;
       if (dataAPI.status === 0 || !dataAPI) {
         setTextoResponse('Não há jogos disponíveis');
         setTemJogo(false);
         return;
       }
-
       setTimeout(() => {
         setIsLoading(false);
       }, 500);
 
       setTemJogo(true);
       setResponse(dataAPI);
-    } catch (err) {
-      console.log(err);
-    }
+    }).catch(function (error) {
+      console.error(error);
+    });
+
+
+
   };
 
   const handleClickLink = ({ currentTarget }, loja) => {
@@ -116,25 +122,37 @@ export const GlobalStorage = ({ children }) => {
     }, 1000);
   };
 
+
+  function someGetStoresIWant(response) {
+    if (response) {
+      const filtroInicial = response.filter((jogo, index) => {
+        const plataforma = jogo.platforms
+        console.log(plataforma)
+        return plataforma.includes('Epic Games Store') || plataforma.includes('Steam') || plataforma.includes('GOG')
+      })
+      return filtroInicial
+    }
+
+  }
+
   React.useEffect(() => {
     getData();
   }, []);
 
   React.useEffect(() => {
-    if (response) {
-      setJogos(response);
-    }
+    setJogos(someGetStoresIWant(response));
   }, [response]);
 
   React.useEffect(() => {
     if (response && nomeLoja) {
+      console.log(nomeLoja)
       const filterJogosPerStore = response.filter((jogo) => {
         const plataforma = jogo.platforms;
         return plataforma.includes(nomeLoja);
       });
       setJogos(filterJogosPerStore);
     } else {
-      setJogos(response);
+      setJogos(someGetStoresIWant(response));
     }
   }, [nomeLoja]);
 
