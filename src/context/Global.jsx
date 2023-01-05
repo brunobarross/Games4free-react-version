@@ -27,10 +27,8 @@ export const GlobalStorage = ({ children }) => {
       nome: 'GOG',
       loja: 'GOG',
     },
-    {
-      nome: 'Xbox One',
-      loja: 'Xbox One',
-    },
+
+    
     {
       nome: 'Playstation 4',
       loja: 'Playstation 4',
@@ -39,6 +37,14 @@ export const GlobalStorage = ({ children }) => {
       nome: 'Steam',
       loja: 'Steam',
     },
+    {
+      nome: 'Xbox One',
+      loja: 'Xbox One',
+    },
+    {
+      nome: 'Xbox 360',
+      loja: 'Xbox 360',
+    }
   ]);
   const [timerDays, setTimerDays] = React.useState('00');
   const [timerHours, setTimerHours] = React.useState('00');
@@ -128,8 +134,8 @@ export const GlobalStorage = ({ children }) => {
       const filtroInicial = response.filter((jogo, index) => {
         const plataforma = jogo.platforms
         console.log(plataforma)
-        return plataforma.includes('Epic Games Store') || plataforma.includes('Steam') || plataforma.includes('GOG')
-      })
+        return plataforma.includes('Epic Games Store') || plataforma.includes('Steam') || plataforma.includes('GOG') || plataforma.includes('Playstation 4') || plataforma.includes('Xbox 360') || plataforma.includes('Xbox One')
+      });
       return filtroInicial
     }
 
