@@ -49,9 +49,8 @@ const Jogo = () => {
 
   return (
     <div
-      className={`mx-auto w-full sm:pl-[300px] py-16 relative min-h-screen overflow-hidden flex flex-col justify-center ${
-        isLoading ? 'justify-center items-center' : ''
-      }`}
+      className={`mx-auto w-full sm:pl-[300px] py-16 relative min-h-screen overflow-hidden flex flex-col justify-center ${isLoading ? 'justify-center items-center' : ''
+        }`}
     >
       <Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSideBarOpen} />
       {jogo && (
@@ -66,12 +65,28 @@ const Jogo = () => {
             <div className="plataforma">
               <p>
                 {jogo.type} |{' '}
-                <span className="badge inline-flex">
-                  {jogo.platforms.split(',')[0]}
-                </span>
-                <span className="badge inline-flex ml-2">
-                  {jogo.platforms.split(',')[1]}
-                </span>
+                {jogo.platforms.split(',')[0] &&
+                  <span
+                    className={`badge inline-flex ml-2 ${jogo.platforms
+                      .toLowerCase()
+                      .split(',')[0]
+                      .replace(/ /g, '-')
+                      .replace('|', '-')}`}
+                  >
+                   {jogo.platforms.split(',')[0]}
+                  </span>
+                }
+                {jogo.platforms.split(',')[1] &&
+                  <span
+                    className={`badge inline-flex ml-2 ${jogo.platforms
+                      .toLowerCase()
+                      .split(',')[0]
+                      .replace(/ /g, '-')
+                      .replace('|', '-')}`}
+                  >
+                   {jogo.platforms.split(',')[1]}
+                  </span>
+                }
               </p>
             </div>
             <div className="valor">

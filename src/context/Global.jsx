@@ -133,7 +133,6 @@ export const GlobalStorage = ({ children }) => {
     if (response) {
       const filtroInicial = response.filter((jogo, index) => {
         const plataforma = jogo.platforms
-        console.log(plataforma)
         return plataforma.includes('Epic Games Store') || plataforma.includes('Steam') || plataforma.includes('GOG') || plataforma.includes('Playstation 4') || plataforma.includes('Xbox 360') || plataforma.includes('Xbox One')
       });
       return filtroInicial
