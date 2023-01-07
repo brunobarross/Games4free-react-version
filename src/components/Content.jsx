@@ -21,7 +21,7 @@ const Content = () => {
   
       <HeaderContent />
       <div
-        className={`cards-wrapper  mt-16 ${!jogos.length ? "!grid-cols-1  h-full" : ""
+        className={`cards-wrapper mt-8 md:mt-16 ${!jogos.length ? "!grid-cols-1  h-full" : ""
           }`}
       >
         {jogos.length ? (
