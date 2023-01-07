@@ -6,6 +6,8 @@ import {
   Route,
   useSearchParams,
 } from 'react-router-dom';
+
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Jogo from './components/Jogo';
 
 import Sidebar from './components/Sidebar';
@@ -14,6 +16,7 @@ import Home from './pages/Home';
 
 function App() {
   return (
+    <HelmetProvider>
     <GlobalStorage>
       <BrowserRouter>
         <div className="flex">
@@ -26,6 +29,7 @@ function App() {
         </div>
       </BrowserRouter>
     </GlobalStorage>
+    </HelmetProvider>
   );
 }
 

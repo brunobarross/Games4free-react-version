@@ -6,7 +6,8 @@ import Spinner from '../components/Spinner';
 import Jogo from '../components/Jogo';
 import { GlobalContext } from '../context/Global';
 
-import { Helmet } from 'react-helmet';
+import {Helmet} from "react-helmet-async";
+import HeaderContent from '../components/HeaderContent';
 
 
 const Home = () => {
@@ -26,8 +27,9 @@ const Home = () => {
     >
       <Helmet>
         <meta charSet="utf-8" />
-        <title>My Title</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <title>Games4Free | Jogos e DLCS grátis</title>
+        <meta name="description" content="Os melhores jogos gratuitos estão aqui. Resgate as chaves por tempo limitado." />
+        <link rel="canonical" href="https://games4free.app" />
       </Helmet>
       <Navbar />
       {isLoading == true && (

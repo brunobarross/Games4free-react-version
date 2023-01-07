@@ -1,23 +1,28 @@
 import React, { useEffect } from "react"
 import { GlobalContext } from "../context/Global"
 import Card from "./Card"
+import HeaderContent from "./HeaderContent"
 
 const Content = () => {
   const {
     isLoading,
     setIsLoading,
+    handleChangeSelect,
     jogos,
     temJogo,
     textoResponse,
     setLojaUrl,
     lojaUrl,
+    tipo
   } = React.useContext(GlobalContext)
   return (
     <div className="content ">
+
+  
+      <HeaderContent />
       <div
-        className={`cards-wrapper ${
-          !jogos.length ? "!grid-cols-1  h-full" : ""
-        }`}
+        className={`cards-wrapper  mt-16 ${!jogos.length ? "!grid-cols-1  h-full" : ""
+          }`}
       >
         {jogos.length ? (
           jogos.map((jogo) => {
@@ -32,7 +37,7 @@ const Content = () => {
           })
         ) : (
           <div className="message flex flex-col justify-center">
-            <p className="text-2xl text-white ">There are no games available</p>
+            <p className="text-2xl text-white text-center ">Não há jogos disponíveis no momento.</p>
           </div>
         )}
       </div>
