@@ -4,6 +4,8 @@ import Content from './Content';
 import Navbar from './Navbar';
 import Spinner from './Spinner';
 import Jogo from './Jogo';
+import HeaderContent from './HeaderContent';
+
 
 const ContainerPrincipal = ({
   jogos,
@@ -15,17 +17,19 @@ const ContainerPrincipal = ({
 }) => {
   return (
     <div
-      className={`mx-auto w-full sm:pl-[300px] relative min-h-screen overflow-hidden flex ${
-        isLoading ? 'justify-center items-center' : ''
-      }`}
+      className={`mx-auto w-full sm:pl-[300px] relative min-h-screen overflow-hidden flex ${isLoading ? 'justify-center items-center' : ''
+        }`}
     >
       <Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSideBarOpen} />
+    
+
       {isLoading == true && (
         <div className="spinner-container ">
           <Spinner />
         </div>
       )}
 
+        
       {isLoading == false && temJogo == true && (
         <Content
           jogos={jogos}

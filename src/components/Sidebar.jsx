@@ -3,17 +3,17 @@ import Logo from './Logo';
 import LinkSidebar from './LinkSidebar';
 import { X } from 'phosphor-react';
 import { GlobalContext } from '../context/Global';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
-  const { objLinks, sidebarOpen, handleClickLink, setSideBarOpen } =
+  const { objLinks, sidebarOpen,handleClickLink, setSideBarOpen, setTipo, tipo } =
     React.useContext(GlobalContext);
   return (
     <div
-      className={`sidebar ${
-        sidebarOpen
-          ? 'translate-x-0 md:translate-x-0'
-          : '-translate-x-full md:translate-x-0'
-      }`}
+      className={`sidebar ${sidebarOpen
+        ? 'translate-x-0 md:translate-x-0'
+        : '-translate-x-full md:translate-x-0'
+        }`}
     >
       <div className="flex md:hidden justify-end px-8 pt-4">
         <button className="w-8 h-8 bg-white rounded-full grid place-items-center">
@@ -24,21 +24,35 @@ const Sidebar = () => {
       <div className="logo">
         <Logo />
       </div>
-      <ul className="sidebar-lista overflow-y-auto overflow-x-hidden">
+      <ul className='sidebar-lista overflow-y-auto overflow-x-hidden'>
+        <li>
+          <NavLink to={'jogos'} onClick={(e) => handleClickLink(e)}>
+            Jogos
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={'dlcs'} onClick={(e) => handleClickLink(e)}>
+            DLC's
+
+          </NavLink>
+        </li>
+        
+      </ul>
+      {/* <ul className="sidebar-lista overflow-y-auto overflow-x-hidden">
         {objLinks &&
           objLinks.map(({ nome, loja }) => {
             return (
               <LinkSidebar
                 key={nome}
-                handleClickLink={handleClickLink}
+                handleChangeSelect={handleChangeSelect}
                 nome={nome}
                 loja={loja}
               />
             );
           })}
-      </ul>
+      </ul> */}
       <div className="sidebar-footer">
-        <span>Proudly developed by Altamiro Bruno.</span>
+        <span>Orgulhosamente desenvolvido por Altamiro Bruno.</span>
         <div className="social">
           <a href="https://github.com/brunobarross" target="_blank">
             <svg

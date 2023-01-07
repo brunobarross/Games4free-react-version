@@ -14,9 +14,11 @@ export const GlobalStorage = ({ children }) => {
   const [textoResponse, setTextoResponse] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
   const [sidebarOpen, setSideBarOpen] = React.useState(false);
+  const [tipo, setTipo] = React.useState('game');
+  const [quantidade, setQuantidade] = React.useState();
   const [objLinks, setObjLinks] = React.useState([
     {
-      nome: 'All Platforms',
+      nome: 'Todos',
       loja: '',
     },
     {
@@ -28,7 +30,7 @@ export const GlobalStorage = ({ children }) => {
       loja: 'GOG',
     },
 
-    
+
     {
       nome: 'Playstation 4',
       loja: 'Playstation 4',
@@ -52,12 +54,13 @@ export const GlobalStorage = ({ children }) => {
   const [timerSeconds, setTimerSeconds] = React.useState('00');
   let interval = React.useRef();
 
-  const getData = (plataforma) => {
+
+  const getData = () => {
     setIsLoading(true);
     const options = {
       method: 'GET',
       url: 'https://gamerpower.p.rapidapi.com/api/giveaways',
-      params: { type: 'game' },
+      params: { type: tipo },
       headers: {
         'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
         'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com'
@@ -66,6 +69,7 @@ export const GlobalStorage = ({ children }) => {
 
     axios.request(options).then(function (response) {
       const dataAPI = response.data;
+      console.log(dataAPI)
       if (dataAPI.status === 0 || !dataAPI) {
         setTextoResponse('Não há jogos disponíveis');
         setTemJogo(false);
@@ -85,18 +89,27 @@ export const GlobalStorage = ({ children }) => {
 
   };
 
-  const handleClickLink = ({ currentTarget }, loja) => {
+  const handleClickLink = ({ currentTarget }) => {
+    const text = currentTarget.textContent
+    let content = text == "DLC's" ? "loot" : 'game'
+    setTipo(content)
+    setSideBarOpen(!sidebarOpen);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }
+
+  const handleChangeSelect = (target) => {
     setIsLoading(true);
-    if (currentTarget.textContent == 'All Platforms') {
+    if (target.value == 'Todos') {
       setNomeLoja('');
-      setSideBarOpen(!sidebarOpen);
       setTimeout(() => {
         setIsLoading(false);
       }, 500);
       return;
     }
-    setNomeLoja(loja);
-    setSideBarOpen(!sidebarOpen);
+
+    setNomeLoja(target.value);
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -135,6 +148,7 @@ export const GlobalStorage = ({ children }) => {
         const plataforma = jogo.platforms
         return plataforma.includes('Epic Games Store') || plataforma.includes('Steam') || plataforma.includes('GOG') || plataforma.includes('Playstation 4') || plataforma.includes('Xbox 360') || plataforma.includes('Xbox One')
       });
+      setQuantidade(filtroInicial.length)
       return filtroInicial
     }
 
@@ -142,7 +156,7 @@ export const GlobalStorage = ({ children }) => {
 
   React.useEffect(() => {
     getData();
-  }, []);
+  }, [tipo]);
 
   React.useEffect(() => {
     setJogos(someGetStoresIWant(response));
@@ -153,9 +167,12 @@ export const GlobalStorage = ({ children }) => {
       console.log(nomeLoja)
       const filterJogosPerStore = response.filter((jogo) => {
         const plataforma = jogo.platforms;
+        const tipoBrinde = jogo.type;
         return plataforma.includes(nomeLoja);
       });
       setJogos(filterJogosPerStore);
+      setQuantidade(filterJogosPerStore.length)
+
     } else {
       setJogos(someGetStoresIWant(response));
     }
@@ -177,6 +194,7 @@ export const GlobalStorage = ({ children }) => {
         sidebarOpen,
         setSideBarOpen,
         getData,
+        handleChangeSelect,
         handleClickLink,
         timerDays,
         timerHours,
@@ -188,6 +206,12 @@ export const GlobalStorage = ({ children }) => {
         setTimerSeconds,
         interval,
         startTimer,
+        tipo,
+        setTipo,
+        nomeLoja,
+        quantidade,
+        setQuantidade,
+        setNomeLoja
       }}
     >
       {children}

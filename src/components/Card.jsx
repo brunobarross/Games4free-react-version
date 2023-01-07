@@ -79,7 +79,7 @@ const Card = ({
         <div className="flex items-center justify-between mt-4">
           <div className="valor">
             <p>
-              FREE <span>{worth}</span>
+              Grátis <span>{worth}</span>
             </p>
           </div>
           {/* {end_date !== 'N/A' ? (
@@ -100,12 +100,12 @@ const Card = ({
           to={`/jogos/${id}`}
           className="text-primary-500 font-medium inline-flex mt-4 text-sm"
         >
-          More details
+          Detalhes
         </Link>
       </div>
       <div className="btn-container">
         <a href={open_giveaway_url} target="_blank">
-          GET GAME
+          RESGATAR
         </a>
       </div>
     </div>

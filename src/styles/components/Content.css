@@ -1,6 +1,6 @@
 @layer components {
   .content {
-    @apply mx-auto mt-32 lg:mt-24 max-w-[1448px] my-[3rem] flex flex-col items-center lg:px-[3rem] px-6;
+    @apply mx-auto mt-32 lg:mt-16 max-w-[1448px] my-[3rem] flex flex-col items-center lg:px-[3rem] px-6 w-full;
     .cards-wrapper {
       @apply flex flex-col md:grid md:grid-cols-3 gap-8 justify-center;
     }

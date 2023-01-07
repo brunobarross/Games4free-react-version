@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
-const LinkSidebar = ({ handleClickLink, loja, nome }) => {
+const LinkSidebar = ({ handleChangeSelect, loja, nome }) => {
   return (
     <li>
-      <NavLink to={`${loja}`} onClick={(e) => handleClickLink(e, nome)}>
+      <NavLink to={`${loja}`} onClick={(e) => handleChangeSelect(e, nome)}>
         {nome}
         <span className="hidden">{loja}</span>
       </NavLink>

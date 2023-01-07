@@ -91,7 +91,7 @@ const Jogo = () => {
             </div>
             <div className="valor">
               <p>
-                FREE <span>{jogo.worth}</span>
+                Grátis <span>{jogo.worth}</span>
               </p>
             </div>
             <div className="descricao">
@@ -106,7 +106,7 @@ const Jogo = () => {
 
             <div className="btn-container">
               <a href={jogo.open_giveaway_url} target="_blank">
-                GET GAME
+                RESGATAR
               </a>
             </div>
           </div>
