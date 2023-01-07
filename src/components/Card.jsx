@@ -54,7 +54,33 @@ const Card = ({
 
       <div className="texto ">
         <div className="badges flex items-center">
-          <span
+          <p>
+            {type} |{' '}
+            {platforms.split(',')[0] &&
+              <span
+                className={`badge inline-flex ml-2 ${platforms
+                  .toLowerCase()
+                  .split(',')[0]
+                  .replace(/ /g, '-')
+                  .replace('|', '-')}`}
+              >
+                {platforms.split(',')[0]}
+              </span>
+            }
+            {platforms.split(',')[1] &&
+              <span
+                className={`badge inline-flex ml-2 ${platforms
+                  .toLowerCase()
+                  .split(',')[0]
+                  .replace(/ /g, '-')
+                  .replace('|', '-')}`}
+              >
+                {platforms.split(',')[1]}
+              </span>
+            }
+          </p>
+
+          {/* <span
             className={`badge ${platforms
               .toLowerCase()
               .split(',')[0]
@@ -73,7 +99,7 @@ const Card = ({
             >
               {platforms.split(',')[1]}
             </span>
-          }
+          } */}
 
         </div>
         <div className="flex items-center justify-between mt-4">

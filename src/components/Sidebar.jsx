@@ -26,7 +26,7 @@ const Sidebar = () => {
       </div>
       <ul className='sidebar-lista overflow-y-auto overflow-x-hidden'>
         <li>
-          <NavLink to={'jogos'} onClick={(e) => handleClickLink(e)}>
+          <NavLink to={'/'} onClick={(e) => handleClickLink(e)}>
             Jogos
           </NavLink>
         </li>
