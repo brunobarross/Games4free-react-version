@@ -15,4 +15,5 @@
   <li>Loading de carregamento</li>
   <li>Single page dedicada pro jogo selecionado</li>
   <li>Responsividade para telas menores.</li>
+  <li>Possui dommínio próprio comprado na GoDaddy</li>
 </ul>
