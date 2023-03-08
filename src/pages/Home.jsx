@@ -30,6 +30,8 @@ const Home = () => {
         <title>Games4Free | Jogos e DLCS grátis</title>
         <meta name="description" content="Os melhores jogos gratuitos estão aqui. Resgate as chaves por tempo limitado." />
         <link rel="canonical" href="https://games4free.app" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442854490568457"
+        crossorigin="anonymous"></script>
       </Helmet>
       <Navbar />
       {isLoading == true && (
